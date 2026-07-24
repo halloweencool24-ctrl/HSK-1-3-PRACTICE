@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>汉语学习 · Học Tiếng Trung HSK</title>
+  <meta name="description" content="Web học tiếng Trung tương tác: Flashcard, trắc nghiệm, điền chỗ trống và luyện nghe cho HSK1, HSK2, HSK3." />
+  <meta name="keywords" content="học tiếng Trung, HSK, flashcard, bài tập tiếng Trung, luyện thi HSK" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🇨🇳</text></svg>">
+</head>
+<body>
+<div class="app-wrapper">
+
+  <!-- ═══ HEADER ══════════════════════════════════════════ -->
+  <header class="header">
+    <a class="logo" href="#" onclick="setMode('vocab');return false;">
+      <div class="logo-icon">汉</div>
+      <div class="logo-text">
+        <span class="logo-title">汉语学习</span>
+        <span class="logo-subtitle">HSK Practice · Học Tiếng Trung</span>
+      </div>
+    </a>
+
+    <div class="header-stats">
+      <div class="stat-pill">
+        <span class="stat-icon">🎯</span>
+        <span>Độ chính xác:</span>
+        <span class="stat-value" id="header-stat-score">0%</span>
+      </div>
+      <div class="stat-pill">
+        <span class="stat-icon">✅</span>
+        <span>Câu đã làm:</span>
+        <span class="stat-value" id="header-stat-done">0</span>
+      </div>
+      <div class="stat-pill">
+        <span class="stat-icon">📅</span>
+        <span id="header-date"></span>
+      </div>
+    </div>
+  </header>
+
+  <!-- ═══ MAIN LAYOUT ══════════════════════════════════════ -->
+  <div class="main-layout">
+
+    <!-- ── SIDEBAR ─────────────────────────────────────── -->
+    <aside class="sidebar">
+      <div class="sidebar-section-title">Cấp độ</div>
+      <div id="sidebar-levels"></div>
+
+      <div class="sidebar-section-title" style="margin-top:16px">Bài tập</div>
+      <div id="sidebar-modes"></div>
+
+      <!-- Progress -->
+      <div class="sidebar-progress">
+        <h4>📊 Tiến độ học</h4>
+        <div id="sidebar-progress-items"></div>
+      </div>
+    </aside>
+
+    <!-- ── CONTENT ─────────────────────────────────────── -->
+    <main class="content-area" id="main-content">
+      <!-- Rendered by JS -->
+    </main>
+
+  </div><!-- end main-layout -->
+
+  <!-- ═══ MOBILE BOTTOM NAV ════════════════════════════════ -->
+  <nav class="mobile-nav">
+    <div class="mobile-nav-items">
+      <button class="mobile-nav-btn active" data-mode="vocab"       onclick="setMode('vocab')">
+        <span class="mnav-icon">📚</span> Từ vựng
+      </button>
+      <button class="mobile-nav-btn" data-mode="flashcard"   onclick="setMode('flashcard')">
+        <span class="mnav-icon">🃏</span> Flashcard
+      </button>
+      <button class="mobile-nav-btn" data-mode="quiz"        onclick="setMode('quiz')">
+        <span class="mnav-icon">📝</span> Quiz
+      </button>
+      <button class="mobile-nav-btn" data-mode="fillblank"   onclick="setMode('fillblank')">
+        <span class="mnav-icon">✏️</span> Điền
+      </button>
+      <button class="mobile-nav-btn" data-mode="listening"   onclick="setMode('listening')">
+        <span class="mnav-icon">🎧</span> Nghe
+      </button>
+    </div>
+  </nav>
+
+</div><!-- end app-wrapper -->
+
+<!-- ═══ SCRIPTS ════════════════════════════════════════════ -->
+<script src="data.js"></script>
+<script src="app.js"></script>
+<script>
+  // Date display
+  const now = new Date();
+  const opts = { weekday:'short', day:'numeric', month:'short' };
+  document.getElementById('header-date').textContent =
+    now.toLocaleDateString('vi-VN', opts);
+</script>
+</body>
+</html>
